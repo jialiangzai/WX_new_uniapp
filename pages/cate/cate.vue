@@ -1,5 +1,7 @@
 <template>
   <view>
+    <!-- 搜索组件 -->
+    <my-search @myclick="goSearch"></my-search>
     <view class="scroll-view-container">
       <!-- 左侧的滚动视图区域 -->
       <scroll-view class="left-scroll-view" scroll-y :style="{height: wh + 'px'}">
@@ -52,8 +54,8 @@
     onLoad() {
       // 获取当前系统的信息
       const sysInfo = uni.getSystemInfoSync()
-      // 为 wh 窗口可用高度动态赋值
-      this.wh = sysInfo.windowHeight
+      // 为 wh 窗口可用高度动态赋值减去搜索组件高度避免显示不完整
+      this.wh = sysInfo.windowHeight - 50
       // 调用方法
       this.getCateList()
     },
@@ -77,10 +79,17 @@
         // 动态设置右侧列表滚动开始位置
         this.scrollTop === 0 ? 1 : 0
       },
-      gotoGoodsList(url){
+      gotoGoodsList(url) {
         uni.navigateTo({
           // 跳转到分类下的商品列表
-          url:'/subpkg/goods_list/goods_list?cid=' + url.cat_id
+          url: '/subpkg/goods_list/goods_list?cid=' + url.cat_id
+        })
+      },
+      // 点击跳转
+      goSearch(){
+        // console.log('我是父级')
+        uni.navigateTo({
+          url:'/subpkg/search/search'
         })
       }
     },

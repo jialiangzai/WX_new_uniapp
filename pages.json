@@ -2,35 +2,31 @@
   "pages": [{
     "path": "pages/home/home",
     "style": {
-      "navigationBarTitleText": "",
       "enablePullDownRefresh": false
     }
 
   }, {
     "path": "pages/cate/cate",
     "style": {
-      "navigationBarTitleText": "",
       "enablePullDownRefresh": false
     }
 
   }, {
     "path": "pages/cart/cart",
     "style": {
-      "navigationBarTitleText": "",
       "enablePullDownRefresh": false
     }
 
   }, {
     "path": "pages/my/my",
     "style": {
-      "navigationBarTitleText": "",
       "enablePullDownRefresh": false
     }
 
   }],
   "globalStyle": {
     "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "黑马优购",
+    "navigationBarTitleText": "NEWS",
     "navigationBarBackgroundColor": "#C00000",
     "backgroundColor": "#FFFFFF"
   },
@@ -70,16 +66,19 @@
   "subPackages": [{
     "root": "subpkg",
     "pages": [{
-                    "path" : "goods_detail/goods_detail",
-                    "style" :                                                                                    
-                {
-                    "navigationBarTitleText": "",
-                    "enablePullDownRefresh": false
-                }
-                
-                }
-                ,{
-                    "path" : "goods_list/goods_list",
+      "path": "goods_detail/goods_detail",
+      "style": {
+          "enablePullDownRefresh": false
+      }
+
+    }, {
+      "path": "goods_list/goods_list",
+      "style": {
+          "enablePullDownRefresh": false
+      }
+
+    }    ,{
+                    "path" : "search/search",
                     "style" :                                                                                    
                 {
                     "navigationBarTitleText": "",
