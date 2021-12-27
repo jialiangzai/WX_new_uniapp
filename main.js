@@ -13,11 +13,12 @@ $http.beforeRequest = function(config) {
   // 显示loading
   uni.showToast({
     title: '数据加载中',
+    icon:'loading'
   })
 }
 // 响应拦截
 $http.afterRequest = function() {
-  // 显示loading
+  // loading
   uni.hideLoading()
 },
 
@@ -43,14 +44,14 @@ app.$mount()
 // #endif
 
 // #ifdef VUE3
-import {
-  createSSRApp
-} from 'vue'
-import App from './App.vue'
-export function createApp() {
-  const app = createSSRApp(App)
-  return {
-    app
-  }
-}
+// import {
+//   createSSRApp
+// } from 'vue'
+// import App from './App.vue'
+// export function createApp() {
+//   const app = createSSRApp(App)
+//   return {
+//     app
+//   }
+// }
 // #endif
