@@ -1,5 +1,5 @@
 {
-    "name" : "jushinews",
+    "name" : "购多多",
     "appid" : "__UNI__88D8EF4",
     "description" : "",
     "versionName" : "1.0.0",
@@ -52,9 +52,11 @@
         "appid" : "wxf372bec0097c5872",
         "setting" : {
             "urlCheck" : false,
-            "es6" : false,
-            "checkSiteMap":false
+            "es6" : true,
+            "checkSiteMap" : false,
+            "minified" : true
         },
-        "usingComponents" : true
+        "usingComponents" : true,
+        "permission" : {}
     }
 }
