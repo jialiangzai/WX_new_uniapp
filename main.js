@@ -11,6 +11,13 @@ uni.$http = $http
 $http.baseUrl = 'https://www.uinav.com'
 /* 请求拦截 */
 $http.beforeRequest = function(config) {
+  // token
+  if (config.url.indexOf('/my/') !== -1) {
+    // 添加请求头
+    // console.log(store)
+    const token = store.state.m_user.token
+    config.header.Authorization = token
+  }
   // 显示loading
   uni.showToast({
     title: '数据加载中',
