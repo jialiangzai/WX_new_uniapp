@@ -47,7 +47,9 @@
 </template>
 
 <script>
+  import badgeMix from '@/mixin/mixin.js'
   export default {
+    mixins: [badgeMix],
     data() {
       return {
         // 轮播图

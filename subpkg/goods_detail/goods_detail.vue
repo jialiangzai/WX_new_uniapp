@@ -23,6 +23,7 @@
         </view>
       </view>
       <!-- 运费 -->
+      <!-- <view class="yf">快递：免运费---{{total}}</view>测试 -->
       <view class="yf">快递：免运费</view>
     </view>
 
@@ -43,7 +44,19 @@
 </template>
 
 <script>
+  import {
+    mapState,
+    mapMutations,
+    mapGetters
+  } from "vuex"
   export default {
+
+    computed: {
+      // ...mapState('模块的名称', ['要映射的数据名称1', '要映射的数据名称2'])
+      ...mapState('m_cart', []),
+      ...mapGetters('m_cart', ['total'])
+    },
+
     data() {
       return {
         // 商品详情对象
@@ -76,6 +89,7 @@
       this.getGoodsDetail(goods_id)
     },
     methods: {
+      ...mapMutations('m_cart', ['addToCart']),
       async getGoodsDetail(goods_id) {
         const {
           data: res
@@ -108,8 +122,36 @@
             url: '/pages/cart/cart'
           })
         }
+      },
+      // 右侧按钮加入购物车
+      buttonClick(e) {
+        if (e.content.text === '加入购物车') {
+          const goods = {
+            goods_id: this.goods_info.goods_id, // 商品的Id
+            goods_name: this.goods_info.goods_name, // 商品的名称
+            goods_price: this.goods_info.goods_price, // 商品的价格
+            goods_count: 1, // 商品的数量
+            goods_small_logo: this.goods_info.goods_small_logo, // 商品的图片
+            goods_state: true, // 商品的勾选状态
+          }
+          // addToCart
+          this.addToCart(goods)
+        }
       }
-
+    },
+    watch: {
+      // 使用函数形式首次不加载所以改为对象
+      total: {
+        handler(newValue) {
+          // 通过数组的 find() 方法，找到购物车按钮的配置对象
+          const findCart = this.options.find(y => y.text === '购物车')
+          if (findCart) {
+            // 改变info
+            findCart.info = newValue
+          }
+        },
+        immediate: true
+      }
     },
   }
 </script>

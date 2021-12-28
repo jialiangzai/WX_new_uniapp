@@ -36,7 +36,9 @@
 </template>
 
 <script>
+  import badgeMix from '@/mixin/mixin.js'
   export default {
+    mixins: [badgeMix],
     data() {
       return {
         // 窗口的可用高度 = 屏幕高度 - navigationBar高度 - tabBar 高度
@@ -86,10 +88,10 @@
         })
       },
       // 点击跳转
-      goSearch(){
+      goSearch() {
         // console.log('我是父级')
         uni.navigateTo({
-          url:'/subpkg/search/search'
+          url: '/subpkg/search/search'
         })
       }
     },
